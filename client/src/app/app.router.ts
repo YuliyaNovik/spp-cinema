@@ -2,12 +2,16 @@ import { RouterModule, Routes } from "@angular/router";
 import { MoviesComponent } from "./component/movies/movies.component";
 
 export const routes = [
-  { path: "movies", component: MoviesComponent, title: "Movies" }
+  { paths: ["", "movies"], component: MoviesComponent, title: "Movies" }
 ];
 export const components = [MoviesComponent];
+export const appRoutes = () => {
+  let routeList: Routes = [];
 
-export const appRoutes: Routes = routes.map(item => {
-  {
-    return { path: item.path, component: item.component };
+  for (let route of routes) {
+    for (let path of route.paths) {
+      routeList.push({ path: path, component: route.component });
+    }
   }
-});
+  return routeList;
+};
