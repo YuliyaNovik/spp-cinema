@@ -1,0 +1,28 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img width="100%" src={{movie.image}} alt={{movie.title}}>
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+          <h6 class="card-subtitle text-muted">{{movie.year}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Genre: {{movie.genre}}</li>
+          <li class="list-group-item">Country: {{movie.country}}</li>
+          <li class="list-group-item">Duration: {{movie.duration}}</li>
+        </ul>
+        <div class="card-body">
+          <p class="card-text">{{movie.description}}</p>
+        </div>
+        <div class="card-body">
+          <button class="btn btn-success">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
