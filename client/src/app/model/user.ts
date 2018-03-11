@@ -1,8 +1,8 @@
 import { Role } from "../enum/role";
 
 export class User {
-  public userName: String;
-  public email: String;
-  public password: String;
+  public userName: string;
+  public email: string;
+  public password: string;
   public role: Role;
 }
