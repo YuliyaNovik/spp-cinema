@@ -8,6 +8,7 @@ import { Movie } from "../../model/movie";
 })
 export class MoviesComponent implements OnInit {
   private movies: Array<Movie>;
+  
   constructor() {
     this.movies = [];
     this.movies.push({

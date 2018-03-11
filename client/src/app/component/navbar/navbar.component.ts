@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { routes } from "../../app.router";
+import { navs } from "../../app.router";
+import { User } from "../../model/user";
 import { Route } from "../../model/route";
-import { getActiveRouteIndex } from "../../helper/navsHelper";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -10,13 +11,11 @@ import { getActiveRouteIndex } from "../../helper/navsHelper";
 })
 export class NavbarComponent implements OnInit {
   private navs: Array<Route>;
-  private userName: String;
-  private activeIndex: Number;
+  private user: User = null;
+  private activeIndex: number;
 
-  constructor() {
-    this.navs = routes;
-    this.userName = "Alex Loi";
-    this.activeIndex = getActiveRouteIndex(routes);
+  constructor(private router: Router) {
+    this.navs = navs;
   }
 
   ngOnInit() {}

@@ -1,5 +1,5 @@
 export class Route {
-  public title: String;
-  public paths: Array<String>;
-  public component: Object;
+  public title: string;
+  public paths: Array<string>;
+  public component: any;
 }
