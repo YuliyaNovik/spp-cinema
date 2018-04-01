@@ -1,6 +1,9 @@
 package cinema.Model;
 
+import cinema.Enum.Role;
+
 public class User {
+    public int id;
     public String userName;
     public String email;
     public String password;
