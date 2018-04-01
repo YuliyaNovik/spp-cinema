@@ -1,7 +1,7 @@
 package cinema.Service;
 
 import cinema.DAL.DAL;
-import cinema.Model.Role;
+import cinema.Enum.Role;
 import cinema.Model.User;
 
 public class UserService {
