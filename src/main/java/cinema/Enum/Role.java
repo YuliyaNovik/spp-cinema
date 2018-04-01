@@ -1,4 +1,4 @@
-package cinema.Model;
+package cinema.Enum;
 
 public enum Role {
     DEFAULT,
