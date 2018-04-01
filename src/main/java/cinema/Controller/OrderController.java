@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
     @RequestMapping(method = RequestMethod.GET, path = "/order")
-    public ResponseEntity order(@RequestParam(value="name", defaultValue="World") String name) {
+    public ResponseEntity order() {
         return new ResponseEntity(HttpStatus.OK);
     }
 }
