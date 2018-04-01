@@ -13,8 +13,8 @@ import java.util.function.Function;
 public class UserDAL extends BaseDAL {
     private static final int ID_INDEX = 1;
     private static final int USER_NAME_INDEX = 2;
-    private static final int EMAIL_INDEX = 3;
-    private static final int PASSWORD_INDEX = 4;
+    private static final int PASSWORD_INDEX = 3;
+    private static final int EMAIL_INDEX = 4;
     private static final int ROLE_INDEX = 5;
 
     public User getUserByName(String name) {

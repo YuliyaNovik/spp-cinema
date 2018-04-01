@@ -2,8 +2,8 @@ package cinema.DAL;
 
 import java.sql.*;
 
-class BaseDAL {
-    private static final String url = "jdbc:mysql://localhost:3306/cinema?autoReconnect=true&useSSL=false";
+public class BaseDAL {
+    private static final String url = "jdbc:mysql://localhost:3306/mydb?autoReconnect=true&useSSL=false&characterEncoding=UTF8";
     private static final String user = "root";
     private static final String password = "1610-19";
 

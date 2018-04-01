@@ -1,6 +1,6 @@
 package cinema.Helper;
 
-import cinema.Model.Role;
+import cinema.Enum.Role;
 
 public class RoleHelper {
     private static final String DEFAULT = "default";
