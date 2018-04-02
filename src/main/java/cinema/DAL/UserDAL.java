@@ -20,22 +20,54 @@ public class UserDAL extends BaseDAL {
     public User getUserByName(String name) {
         String query = String.format(SQLQuery.getUserByName, name);
 
-        List<User> users = getUsersByQuery(query);
+        List<User> users = get(query);
         return users.size() > 0 ? users.get(0) : null;
     }
 
     public User getUserByEmail(String email) {
         String query = String.format(SQLQuery.getUserByEmail, email);
 
-        List<User> users = getUsersByQuery(query);
+        List<User> users = get(query);
         return users.size() > 0 ? users.get(0) : null;
     }
 
-    public List<User> getUsersByQuery(String query) {
-        return getUsers(query);
+
+    public User getById(int id) {
+        String query = String.format(SQLQuery.getUserById, id);
+        List<User> users = get(query);
+        return users.size() > 0 ? users.get(0) : null;
     }
 
-    public boolean insertUser(User user) {
+    public List<User> getAll() {
+        return get(SQLQuery.getAllUser);
+    }
+
+    public List<User> getByQuery(String query) {
+        return get(query);
+    }
+
+    public boolean deleteById(int id) {
+        String query = String.format(SQLQuery.deleteUser, id);
+        boolean isDeleted = openUpdateConnection(query);
+        closeConnection(null);
+        return isDeleted;
+    }
+
+    public boolean update(User user) {
+        String query = String.format(
+                SQLQuery.updateUser,
+                user.userName,
+                user.email,
+                user.password,
+                RoleHelper.getDbRole(user.role),
+                user.id
+        );
+        boolean isUpdated = openUpdateConnection(query);
+        closeConnection(null);
+        return isUpdated;
+    }
+
+    public boolean insert(User user) {
         String query = String.format(
             SQLQuery.insertUser,
             user.userName,
@@ -48,7 +80,7 @@ public class UserDAL extends BaseDAL {
         return isCreated;
     }
 
-    private List<User> getUsers(String query) {
+    private List<User> get(String query) {
         ResultSet result = openConnection(query);
 
         List<User> users = new ArrayList<>();
