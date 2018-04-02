@@ -2,11 +2,11 @@ package cinema.Model;
 
 import java.sql.Date;
 
-public class ShowingMovie {
+public class Showing {
     public int id;
     public int cinemaId;
     public int movieId;
-    public Date startShowingDate;
-    public Date endShowingDate;
+    public String startShowingDate;
+    public String endShowingDate;
     public double estimatedCost;
 }
