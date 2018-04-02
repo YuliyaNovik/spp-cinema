@@ -2,13 +2,14 @@ package cinema.Service;
 
 import cinema.DAL.DAL;
 import cinema.Util.CSVUtil;
+import cinema.Util.FilterUtil;
 
 public class ExportService {
     private static final String MOVIE_NAME = "movie";
 
     public String exportToCSV(String table, String filter) {
-        FilterService filterService = new FilterService();
-        String query = filterService.generateQuery(filter, table);
+        FilterUtil filterUtil = new FilterUtil();
+        String query = filterUtil.generateQuery(filter, table);
         if (query == null) {
             return null;
         }

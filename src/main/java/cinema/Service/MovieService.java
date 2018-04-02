@@ -2,6 +2,7 @@ package cinema.Service;
 
 import cinema.DAL.DAL;
 import cinema.Model.Movie;
+import cinema.Util.FilterUtil;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class MovieService {
     }
 
     public List<Movie> getMovieByFilter(String filter) {
-        FilterService filterService = new FilterService();
-        String query = filterService.generateQuery(filter, "movie");
+        FilterUtil filterUtil = new FilterUtil();
+        String query = filterUtil.generateQuery(filter, "movie");
         if (query == null) {
             return null;
         }
