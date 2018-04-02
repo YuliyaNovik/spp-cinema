@@ -1,10 +1,10 @@
-package cinema.Service;
+package cinema.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FilterService {
+public class FilterUtil {
     public String generateQuery(String filter, String table) {
         try {
             List<String> token = getTokens(filter);
