@@ -24,7 +24,7 @@ public class AuthController {
     public ResponseEntity registration(@RequestBody User user) {
         boolean isCreated = Service.getUserService().createUser(user);
 
-        HttpStatus status = isCreated ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+        HttpStatus status = isCreated ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
         return new ResponseEntity(status);
     }
 }

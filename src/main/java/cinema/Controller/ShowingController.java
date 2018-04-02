@@ -1,39 +1,48 @@
 package cinema.Controller;
 
-import cinema.Model.ShowingMovie;
+import cinema.Model.Showing;
+import cinema.Service.Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ShowingController {
     @RequestMapping(method = RequestMethod.GET, path = "/api/showing")
     public ResponseEntity get(@RequestParam(value="id") int id) {
-        return new ResponseEntity(HttpStatus.OK);
+        Showing showing = Service.getShowingService().getShowing(id);
+        return new ResponseEntity<>(showing, showing == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/showing/all")
     public ResponseEntity all() {
-        return new ResponseEntity(HttpStatus.OK);
+        List<Showing> showings = Service.getShowingService().getAllShowing();
+        return new ResponseEntity<>(showings, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/showing/filter")
     public ResponseEntity filter(@RequestParam(value = "filter") String filter) {
-        return new ResponseEntity(HttpStatus.OK);
+        List<Showing> showings = Service.getShowingService().getShowingByFilter(filter);
+        return new ResponseEntity<>(showings, showings == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/api/showing")
-    public ResponseEntity create(@RequestBody ShowingMovie showingMovie) {
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity create(@RequestBody Showing showing) {
+        boolean isSuccessful = Service.getShowingService().createShowing(showing);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/api/showing")
-    public ResponseEntity update(@RequestBody ShowingMovie showingMovie) {
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity update(@RequestBody Showing showing) {
+        boolean isSuccessful = Service.getShowingService().updateShowing(showing);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/api/showing")
     public ResponseEntity delete(@RequestParam(value = "id") int id) {
-        return new ResponseEntity(HttpStatus.OK);
+        boolean isSuccessful = Service.getShowingService().deleteShowing(id);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 }

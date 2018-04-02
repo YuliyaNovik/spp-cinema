@@ -31,18 +31,18 @@ public class MovieController {
     @RequestMapping(method = RequestMethod.POST, path = "/api/movie")
     public ResponseEntity create(@RequestBody Movie movie) {
         boolean isSuccessful = Service.getMovieService().createMovie(movie);
-        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/api/movie")
     public ResponseEntity update(@RequestBody Movie movie) {
         boolean isSuccessful = Service.getMovieService().updateMovie(movie);
-        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/api/movie")
     public ResponseEntity delete(@RequestParam(value = "id") int id) {
         boolean isSuccessful = Service.getMovieService().deleteMovie(id);
-        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 }
