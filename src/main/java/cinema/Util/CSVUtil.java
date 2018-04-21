@@ -1,13 +1,13 @@
 package cinema.Util;
 
 public class CSVUtil {
-    public String generate(Object[] items) {
+    public byte[] generate(Object[] items) {
         try {
             StringBuilder csv = new StringBuilder();
             for (Object item : items) {
                 csv.append(stringToCSVString(item.toString()));
             }
-            return csv.toString();
+            return csv.toString().getBytes("UTF-8");
         } catch (Exception ex) {
             return null;
         }
