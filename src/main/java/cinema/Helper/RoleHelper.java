@@ -8,6 +8,22 @@ public class RoleHelper {
     private static final String MOVIE_ADMIN = "movie_admin";
     private static final String ACCOUNTANT = "accountant";
 
+    public static int getLevel(Role role) {
+        switch (role) {
+            case DEFAULT:
+                return 1;
+            case MOVIE_ADMIN:
+                return 2;
+            case ACCOUNTANT:
+                return 3;
+            case ADMIN:
+                return 4;
+            case ANON:
+            default:
+                return 0;
+        }
+    }
+
     public static Role getRole(String name) {
         switch (name) {
             case RoleHelper.DEFAULT:
