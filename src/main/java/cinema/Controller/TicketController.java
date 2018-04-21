@@ -28,12 +28,6 @@ public class TicketController {
         return new ResponseEntity<>(tickets, tickets == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/api/ticket")
-    public ResponseEntity create(@RequestBody Ticket ticket) {
-        boolean isSuccessful = Service.getTicketService().createTicket(ticket);
-        return new ResponseEntity(isSuccessful ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
-    }
-
     @RequestMapping(method = RequestMethod.PUT, path = "/api/ticket")
     public ResponseEntity update(@RequestBody Ticket ticket) {
         boolean isSuccessful = Service.getTicketService().updateTicket(ticket);

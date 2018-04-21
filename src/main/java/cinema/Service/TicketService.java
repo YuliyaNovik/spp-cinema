@@ -1,6 +1,8 @@
 package cinema.Service;
 
 import cinema.DAL.DAL;
+import cinema.Model.Seat;
+import cinema.Model.Session;
 import cinema.Model.Ticket;
 import cinema.Util.FilterUtil;
 
@@ -25,12 +27,12 @@ public class TicketService {
         return DAL.getTicketDAL().getByQuery(query);
     }
 
-    public boolean createTicket(Ticket Ticket) {
-        return DAL.getTicketDAL().insert(Ticket);
+    public boolean createTicket(Ticket ticket) {
+        return DAL.getTicketDAL().insert(ticket);
     }
 
-    public boolean updateTicket(Ticket Ticket) {
-        return DAL.getTicketDAL().update(Ticket);
+    public boolean updateTicket(Ticket ticket) {
+        return DAL.getTicketDAL().update(ticket);
     }
 
     public boolean deleteTicket(int id) {

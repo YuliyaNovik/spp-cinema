@@ -30,7 +30,7 @@ public class UserService {
             return false;
         }
         user.role = Role.DEFAULT;
-        return DAL.getUserDAL().insertUser(user);
+        return DAL.getUserDAL().insert(user);
     }
 
     public User getUser(int id) {

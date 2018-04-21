@@ -8,6 +8,30 @@ public class Service {
     private static SessionService sessionService = null;
     private static ShowingService showingService = null;
     private static TicketService ticketService = null;
+    private static AuthService authService = null;
+    private static SeatService seatService = null;
+    private static SalesReportService salesReportService = null;
+
+    public static SalesReportService getSalesReportService() {
+        if (salesReportService == null) {
+            salesReportService = new SalesReportService();
+        }
+        return salesReportService;
+    }
+
+    public static SeatService getSeatService() {
+        if (seatService == null) {
+            seatService = new SeatService();
+        }
+        return seatService;
+    }
+
+    public static AuthService getAuthService() {
+        if (authService == null) {
+            authService = new AuthService();
+        }
+        return authService;
+    }
 
     public static CinemaRoomService getCinemaRoomService() {
         if (cinemaRoomService == null) {

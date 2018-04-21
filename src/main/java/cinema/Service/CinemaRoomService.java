@@ -25,12 +25,12 @@ public class CinemaRoomService {
         return DAL.getCinemaRoomDAL().getByQuery(query);
     }
 
-    public boolean createCinemaRoom(CinemaRoom CinemaRoom) {
-        return DAL.getCinemaRoomDAL().insert(CinemaRoom);
+    public boolean createCinemaRoom(CinemaRoom cinemaRoom) {
+        return DAL.getCinemaRoomDAL().insert(cinemaRoom);
     }
 
-    public boolean updateCinemaRoom(CinemaRoom CinemaRoom) {
-        return DAL.getCinemaRoomDAL().update(CinemaRoom);
+    public boolean updateCinemaRoom(CinemaRoom cinemaRoom) {
+        return DAL.getCinemaRoomDAL().update(cinemaRoom);
     }
 
     public boolean deleteCinemaRoom(int id) {

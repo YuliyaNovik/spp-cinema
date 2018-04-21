@@ -25,12 +25,12 @@ public class SessionService {
         return DAL.getSessionDAL().getByQuery(query);
     }
 
-    public boolean createSession(Session Session) {
-        return DAL.getSessionDAL().insert(Session);
+    public boolean createSession(Session session) {
+        return DAL.getSessionDAL().insert(session);
     }
 
-    public boolean updateSession(Session Session) {
-        return DAL.getSessionDAL().update(Session);
+    public boolean updateSession(Session session) {
+        return DAL.getSessionDAL().update(session);
     }
 
     public boolean deleteSession(int id) {

@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ShowingDAL extends BaseDAL {
     private static final int ID_INDEX = 1;
-    private static final int CINEMA_ID_INDEX = 2;
-    private static final int MOVIE_ID_INDEX = 3;
+    private static final int MOVIE_ID_INDEX = 1;
+    private static final int CINEMA_ID_INDEX = 3;
     private static final int START_SHOWING_DATE_INDEX = 4;
     private static final int END_SHOWING_DATE_INDEX = 5;
     private static final int ESTIMATED_COST_INDEX = 6;

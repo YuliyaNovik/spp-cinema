@@ -87,6 +87,7 @@ public class UserDAL extends BaseDAL {
         try {
             while (result != null && result.next()) {
                 User user = new User();
+                user.id = result.getInt(UserDAL.ID_INDEX);
                 user.userName = result.getString(UserDAL.USER_NAME_INDEX);
                 user.password = result.getString(UserDAL.PASSWORD_INDEX);
                 user.email = result.getString(UserDAL.EMAIL_INDEX);

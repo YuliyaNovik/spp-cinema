@@ -7,6 +7,22 @@ public class DAL {
     private static SessionDAL sessionDAL = null;
     private static ShowingDAL showingDAL = null;
     private static TicketDAL ticketDAL = null;
+    private static AuthDAL authDAL = null;
+    private static SeatDAL seatDAL = null;
+
+    public static SeatDAL getSeatDAL() {
+        if (seatDAL == null) {
+            seatDAL = new SeatDAL();
+        }
+        return seatDAL;
+    }
+
+    public static AuthDAL getAuthDAL() {
+        if (authDAL == null) {
+            authDAL = new AuthDAL();
+        }
+        return authDAL;
+    }
 
     public static CinemaRoomDAL getCinemaRoomDAL() {
         if (cinemaRoomDAL == null) {

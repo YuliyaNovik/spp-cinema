@@ -11,7 +11,7 @@ import java.util.List;
 public class MovieDAL extends BaseDAL {
     private static final int ID_INDEX = 1;
     private static final int NAME_INDEX = 2;
-    private static final int YEA_INDEX = 3;
+    private static final int YEAR_INDEX = 3;
     private static final int DURATION_INDEX = 4;
     private static final int START_DATE_INDEX = 5;
     private static final int END_DATE_INDEX = 6;
@@ -82,7 +82,7 @@ public class MovieDAL extends BaseDAL {
                 Movie movie = new Movie();
                 movie.id = result.getInt(MovieDAL.ID_INDEX);
                 movie.name = result.getString(MovieDAL.NAME_INDEX);
-                movie.year = result.getInt(MovieDAL.YEA_INDEX);
+                movie.year = result.getInt(MovieDAL.YEAR_INDEX);
                 movie.duration = result.getInt(MovieDAL.DURATION_INDEX);
                 movie.startDate = result.getString(MovieDAL.START_DATE_INDEX);
                 movie.endDate = result.getString(MovieDAL.END_DATE_INDEX);

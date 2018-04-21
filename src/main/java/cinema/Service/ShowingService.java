@@ -25,12 +25,12 @@ public class ShowingService {
         return DAL.getShowingDAL().getByQuery(query);
     }
 
-    public boolean createShowing(Showing Showing) {
-        return DAL.getShowingDAL().insert(Showing);
+    public boolean createShowing(Showing showing) {
+        return DAL.getShowingDAL().insert(showing);
     }
 
-    public boolean updateShowing(Showing Showing) {
-        return DAL.getShowingDAL().update(Showing);
+    public boolean updateShowing(Showing showing) {
+        return DAL.getShowingDAL().update(showing);
     }
 
     public boolean deleteShowing(int id) {

@@ -12,10 +12,10 @@ public class SessionDAL extends BaseDAL {
     private static final int ID_INDEX = 1;
     private static final int SHOWING_ID_INDEX = 2;
     private static final int CINEMA_ROOM_ID_INDEX = 3;
-    private static final int DATE_INDEX = 4;
-    private static final int TIME_INDEX = 5;
-    private static final int COEFFICIENT_INDEX = 6;
-    private static final int NUMBER_OF_SOLD_TICKETS_INDEX = 7;
+    private static final int COEFFICIENT_INDEX = 4;
+    private static final int NUMBER_OF_SOLD_TICKETS_INDEX = 5;
+    private static final int DATE_INDEX = 6;
+    private static final int TIME_INDEX = 7;
 
     public Session getById(int id) {
         String query = String.format(SQLQuery.getSessionById, id);

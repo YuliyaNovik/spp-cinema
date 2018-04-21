@@ -52,8 +52,7 @@ public class TicketDAL extends BaseDAL {
         String query = String.format(
                 SQLQuery.insertTicket,
                 ticket.sessionId,
-                ticket.seatId,
-                ticket.cost
+                ticket.seatId
         );
 
         boolean isCreated = openUpdateConnection(query);
