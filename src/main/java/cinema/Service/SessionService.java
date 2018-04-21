@@ -1,9 +1,11 @@
 package cinema.Service;
 
 import cinema.DAL.DAL;
-import cinema.Model.Session;
+import cinema.DTO.SessionToDoc;
+import cinema.Model.*;
 import cinema.Util.FilterUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SessionService {
@@ -35,5 +37,32 @@ public class SessionService {
 
     public boolean deleteSession(int id) {
         return DAL.getSessionDAL().deleteById(id);
+    }
+
+    public Object[] toDocument(List<Session> sessions) {
+        List<SessionToDoc> dto = new ArrayList<>();
+
+        for (Session session : sessions) {
+            CinemaRoom cinemaRoom = DAL.getCinemaRoomDAL().getById(session.cinemaRoomId);
+            Showing showing = DAL.getShowingDAL().getById(session.showingId);
+            Movie movie = DAL.getMovieDAL().getById(showing.movieId);
+            List<Ticket> tickets = DAL.getTicketDAL().getAll();
+            double costOfTickets = 0;
+            for (Ticket ticket : tickets) {
+                if (ticket.sessionId == session.id) {
+                    costOfTickets += ticket.cost;
+                }
+            }
+
+            SessionToDoc sessionToDoc = new SessionToDoc();
+            sessionToDoc.date = session.date;
+            sessionToDoc.time = session.time;
+            sessionToDoc.numberOfSoldTickets = session.numberOfSoldTickets;
+            sessionToDoc.cinemaRoomName = cinemaRoom.name;
+            sessionToDoc.filmName = movie.name;
+            sessionToDoc.costOfTickets = costOfTickets;
+            dto.add(sessionToDoc);
+        }
+        return dto.toArray();
     }
 }

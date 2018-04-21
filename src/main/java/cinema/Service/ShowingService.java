@@ -1,9 +1,13 @@
 package cinema.Service;
 
 import cinema.DAL.DAL;
+import cinema.DTO.SessionToDoc;
+import cinema.DTO.ShowingToDoc;
+import cinema.Model.Movie;
 import cinema.Model.Showing;
 import cinema.Util.FilterUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowingService {
@@ -35,5 +39,20 @@ public class ShowingService {
 
     public boolean deleteShowing(int id) {
         return DAL.getShowingDAL().deleteById(id);
+    }
+
+    public Object[] toDocument(List<Showing> showings) {
+        List<ShowingToDoc> dto = new ArrayList<>();
+
+        for (Showing showing: showings) {
+            Movie movie = DAL.getMovieDAL().getById(showing.movieId);
+            ShowingToDoc showingToDoc = new ShowingToDoc();
+            showingToDoc.endShowingDate = showing.endShowingDate;
+            showingToDoc.startShowingDate = showing.startShowingDate;
+            showingToDoc.estimatedCost = showing.estimatedCost;
+            showingToDoc.filmName = movie.name;
+            dto.add(showingToDoc);
+        }
+        return dto.toArray();
     }
 }

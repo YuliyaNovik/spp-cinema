@@ -6,6 +6,9 @@ import java.util.List;
 
 public class FilterUtil {
     public String generateQuery(String filter, String table) {
+        if (filter.equals("*")) {
+            return "SELECT * FROM " + table;
+        }
         try {
             List<String> token = getTokens(filter);
             List<String> exp = getExpression(filter);

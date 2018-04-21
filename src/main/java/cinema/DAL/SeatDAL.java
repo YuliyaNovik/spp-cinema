@@ -75,7 +75,7 @@ public class SeatDAL extends BaseDAL {
                 seat.cinemaRoomId = result.getInt(SeatDAL.CINEMA_ROOM_ID_INDEX);
                 seat.row = result.getInt(SeatDAL.ROW_INDEX);
                 seat.number = result.getInt(SeatDAL.NUMBER_INDEX);
-                seat.costCoefficient = result.getDouble(SeatDAL.COST_COEFFICIENT_INDEX);
+                seat.costCoefficient = result.getFloat(SeatDAL.COST_COEFFICIENT_INDEX);
                 seats.add(seat);
             }
         } catch (SQLException e) {

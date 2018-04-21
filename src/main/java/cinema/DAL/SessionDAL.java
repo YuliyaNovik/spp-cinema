@@ -82,7 +82,7 @@ public class SessionDAL extends BaseDAL {
                 session.cinemaRoomId = result.getInt(SessionDAL.CINEMA_ROOM_ID_INDEX);
                 session.date = result.getString(SessionDAL.DATE_INDEX);
                 session.time = result.getString(SessionDAL.TIME_INDEX);
-                session.coefficient = result.getDouble(SessionDAL.COEFFICIENT_INDEX);
+                session.coefficient = result.getFloat(SessionDAL.COEFFICIENT_INDEX);
                 session.numberOfSoldTickets = result.getInt(SessionDAL.NUMBER_OF_SOLD_TICKETS_INDEX);
                 sessions.add(session);
             }

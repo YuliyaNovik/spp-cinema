@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShowingDAL extends BaseDAL {
     private static final int ID_INDEX = 1;
-    private static final int MOVIE_ID_INDEX = 1;
+    private static final int MOVIE_ID_INDEX = 2;
     private static final int CINEMA_ID_INDEX = 3;
     private static final int START_SHOWING_DATE_INDEX = 4;
     private static final int END_SHOWING_DATE_INDEX = 5;
@@ -79,7 +79,7 @@ public class ShowingDAL extends BaseDAL {
                 showing.movieId = result.getInt(ShowingDAL.MOVIE_ID_INDEX);
                 showing.startShowingDate = result.getString(ShowingDAL.START_SHOWING_DATE_INDEX);
                 showing.endShowingDate = result.getString(ShowingDAL.END_SHOWING_DATE_INDEX);
-                showing.estimatedCost = result.getInt(ShowingDAL.ESTIMATED_COST_INDEX);
+                showing.estimatedCost = result.getFloat(ShowingDAL.ESTIMATED_COST_INDEX);
 
                 showings.add(showing);
             }

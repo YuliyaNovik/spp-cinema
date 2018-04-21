@@ -70,7 +70,7 @@ public class TicketDAL extends BaseDAL {
                 ticket.id = result.getInt(TicketDAL.ID_INDEX);
                 ticket.sessionId = result.getInt(TicketDAL.SESSION_ID_INDEX);
                 ticket.seatId = result.getInt(TicketDAL.SEAT_ID_INDEX);
-                ticket.cost = result.getDouble(TicketDAL.COST_INDEX);
+                ticket.cost = result.getFloat(TicketDAL.COST_INDEX);
 
                 tickets.add(ticket);
             }
