@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SalesReportController {
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.GET, path = "/api/sales")
     public ResponseEntity get(@RequestParam(value="id") int id) {
         Report report = Service.getSalesReportService().getReport(id);

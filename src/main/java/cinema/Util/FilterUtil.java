@@ -30,7 +30,7 @@ public class FilterUtil {
         for (char ch : filter.toCharArray()) {
             if (ch == '|') {
                 exp.add(" OR ");
-            } else if (ch == '&') {
+            } else if (ch == ' ') {
                 exp.add(" AND ");
             }
         }
@@ -38,7 +38,7 @@ public class FilterUtil {
     }
 
     private List<String> getTokens(String filter) {
-        return Arrays.asList(filter.split("[&|]"));
+        return Arrays.asList(filter.split("[ |]"));
     }
 
     private String translateToken(String token) {

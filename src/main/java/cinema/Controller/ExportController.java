@@ -4,10 +4,7 @@ import cinema.Service.Service;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
@@ -16,6 +13,7 @@ import java.io.InputStream;
 
 @RestController
 public class ExportController {
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.GET, path = "/api/export/pdf")
     public void pdf(HttpServletResponse response, @RequestParam(value = "table") String table, @RequestParam(value = "filter") String filter) throws IOException {
         byte[] pdf = Service.getExportService().exportToPDF(table, filter);
@@ -29,6 +27,7 @@ public class ExportController {
         response.flushBuffer();
     }
 
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.GET, path = "/api/export/excel")
     public void excel(HttpServletResponse response, @RequestParam(value = "table") String table, @RequestParam(value = "filter") String filter) throws IOException {
         byte[] xlsx = Service.getExportService().exportToXLSX(table, filter);
@@ -42,6 +41,7 @@ public class ExportController {
         response.flushBuffer();
     }
 
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.GET, path = "/api/export/csv")
     public void csv(HttpServletResponse response, @RequestParam(value = "table") String table, @RequestParam(value = "filter") String filter) throws IOException {
         byte[] csv = Service.getExportService().exportToCSV(table, filter);

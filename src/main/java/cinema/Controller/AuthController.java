@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.GET, path = "/api/login")
     public ResponseEntity<Auth> login(
-        @RequestParam(value="userName") String userName,
-        @RequestParam(value="password") String password
+            @RequestParam(value = "userName") String userName,
+            @RequestParam(value = "password") String password
     ) {
         User user = Service.getUserService().getUser(userName, password);
         Auth auth = Service.getAuthService().createAuthForUser(user);
+
         Service.getAuthService().setUser(auth);
         HttpStatus status = user != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 
         return new ResponseEntity<>(auth, status);
     }
 
+    @CrossOrigin("*")
     @RequestMapping(method = RequestMethod.POST, path = "/api/registration")
     public ResponseEntity registration(@RequestBody User user) {
         boolean isCreated = Service.getUserService().createUser(user);
