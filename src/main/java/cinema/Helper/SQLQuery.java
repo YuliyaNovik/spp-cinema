@@ -13,14 +13,14 @@ public class SQLQuery {
     public static String getMovieById = "SELECT * FROM movie WHERE id = %d";
     public static String getAllMovie = "SELECT * FROM movie";
     public static String deleteMovie = "DELETE FROM movie WHERE id = %d";
-    public static String insertMovie = "INSERT INTO movie (name, year, duration, start_date, end_date, director, age_limit) VALUES ('%s', %d, %d, '%s', '%s', '%s', '%s')";
-    public static String updateMovie = "UPDATE movie SET name = '%s', year = %d, duration = %d, start_date = '%s', end_date = '%s', director = '%s', age_limit = '%s' WHERE movie.id = %d";
+    public static String insertMovie = "INSERT INTO movie (name, year, duration, start_date, end_date, director, age_limit, description) VALUES ('%s', %d, %d, '%s', '%s', '%s', '%s', '%s')";
+    public static String updateMovie = "UPDATE movie SET name = '%s', year = %d, duration = %d, start_date = '%s', end_date = '%s', director = '%s', age_limit = '%s', description = '%s' WHERE movie.id = %d";
     //CINEMA_ROOM
     public static String getCinemaRoomById = "SELECT * FROM cinema_room WHERE id = %d";
     public static String getAllCinemaRoom = "SELECT * FROM cinema_room";
     public static String deleteCinemaRoom = "DELETE FROM cinema_room WHERE id = %d";
-    public static String insertCinemaRoom = "INSERT INTO cinema_room (cinema_id, name, number_of_seats) VALUES (%d, '%s', %d)";
-    public static String updateCinemaRoom = "UPDATE cinema_room SET cinema_id = %d, name = '%s', number_of_seats = %d WHERE cinema_room.id = %d";
+    public static String insertCinemaRoom = "INSERT INTO cinema_room (cinema_id, name, number_of_seats, rows, numbers) VALUES (%d, '%s', %d, %d, %d)";
+    public static String updateCinemaRoom = "UPDATE cinema_room SET cinema_id = %d, name = '%s', number_of_seats = %d, rows = %d, numbers = %d WHERE cinema_room.id = %d";
     //SESSION
     public static String getSessionById = "SELECT * FROM session WHERE id = %d";
     public static String getAllSession = "SELECT * FROM session";

@@ -74,7 +74,7 @@ public class TicketDAL extends BaseDAL {
 
                 tickets.add(ticket);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         closeConnection(result);

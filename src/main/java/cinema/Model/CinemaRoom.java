@@ -5,4 +5,6 @@ public class CinemaRoom {
     public int cinemaId;
     public String name;
     public int numberOfSeats;
+    public int rows;
+    public int numbers;
 }

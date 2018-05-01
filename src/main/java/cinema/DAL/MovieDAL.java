@@ -17,6 +17,7 @@ public class MovieDAL extends BaseDAL {
     private static final int END_DATE_INDEX = 6;
     private static final int DIRECTOR_INDEX = 7;
     private static final int AGE_LIMIT_INDEX = 8;
+    private static final int DESCRIPTION_INDEX = 9;
 
     public Movie getById(int id) {
         String query = String.format(SQLQuery.getMovieById, id);
@@ -49,6 +50,7 @@ public class MovieDAL extends BaseDAL {
                 movie.endDate,
                 movie.director,
                 movie.ageLimit,
+                movie.description,
                 movie.id
         );
         boolean isUpdated = openUpdateConnection(query);
@@ -65,7 +67,8 @@ public class MovieDAL extends BaseDAL {
                 movie.startDate,
                 movie.endDate,
                 movie.director,
-                movie.ageLimit
+                movie.ageLimit,
+                movie.description
         );
 
         boolean isCreated = openUpdateConnection(query);
@@ -88,10 +91,10 @@ public class MovieDAL extends BaseDAL {
                 movie.endDate = result.getString(MovieDAL.END_DATE_INDEX);
                 movie.director = result.getString(MovieDAL.DIRECTOR_INDEX);
                 movie.ageLimit = result.getString(MovieDAL.AGE_LIMIT_INDEX);
-
+                movie.description = result.getString(MovieDAL.DESCRIPTION_INDEX);
                 movies.add(movie);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         closeConnection(result);

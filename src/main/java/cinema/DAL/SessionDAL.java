@@ -86,8 +86,9 @@ public class SessionDAL extends BaseDAL {
                 session.numberOfSoldTickets = result.getInt(SessionDAL.NUMBER_OF_SOLD_TICKETS_INDEX);
                 sessions.add(session);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (NullPointerException | SQLException e) {
+            closeConnection(result);
+            return sessions;
         }
         closeConnection(result);
         return sessions;

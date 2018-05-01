@@ -28,9 +28,16 @@ public class PathHelper {
         paths.add(new Path(Role.ADMIN,  "/api/cinemaRoom", RequestMethod.PUT));
         paths.add(new Path(Role.ADMIN,  "/api/cinemaRoom", RequestMethod.DELETE));
 
-        paths.add(new Path(Role.DEFAULT, "/api/movie", RequestMethod.GET));
-        paths.add(new Path(Role.DEFAULT, "/api/movie/all", RequestMethod.GET));
-        paths.add(new Path(Role.DEFAULT, "/api/movie/filter", RequestMethod.GET));
+        paths.add(new Path(Role.DEFAULT, "/api/seat", RequestMethod.GET));
+        paths.add(new Path(Role.DEFAULT, "/api/seat/all", RequestMethod.GET));
+        paths.add(new Path(Role.DEFAULT, "/api/seat/filter", RequestMethod.GET));
+        paths.add(new Path(Role.ADMIN, "/api/seat", RequestMethod.POST));
+        paths.add(new Path(Role.ADMIN,  "/api/seat", RequestMethod.PUT));
+        paths.add(new Path(Role.ADMIN,  "/api/seat", RequestMethod.DELETE));
+
+        paths.add(new Path(Role.ANON, "/api/movie", RequestMethod.GET));
+        paths.add(new Path(Role.ANON, "/api/movie/all", RequestMethod.GET));
+        paths.add(new Path(Role.ANON, "/api/movie/filter", RequestMethod.GET));
         paths.add(new Path(Role.MOVIE_ADMIN, "/api/movie", RequestMethod.POST));
         paths.add(new Path(Role.MOVIE_ADMIN,  "/api/movie", RequestMethod.PUT));
         paths.add(new Path(Role.MOVIE_ADMIN,  "/api/movie", RequestMethod.DELETE));

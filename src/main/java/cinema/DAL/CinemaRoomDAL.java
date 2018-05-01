@@ -13,6 +13,8 @@ public class CinemaRoomDAL extends BaseDAL {
     private static final int CINEMA_ID_INDEX = 2;
     private static final int NAME_INDEX = 3;
     private static final int NUMBER_OF_SEATS_INDEX = 4;
+    private static final int ROWS_INDEX = 5;
+    private static final int NUMBERS_INDEX = 6;
 
     public CinemaRoom getById(int id) {
         String query = String.format(SQLQuery.getCinemaRoomById, id);
@@ -41,6 +43,8 @@ public class CinemaRoomDAL extends BaseDAL {
                 cinemaRoom.cinemaId,
                 cinemaRoom.name,
                 cinemaRoom.numberOfSeats,
+                cinemaRoom.rows,
+                cinemaRoom.numbers,
                 cinemaRoom.id
         );
         boolean isUpdated = openUpdateConnection(query);
@@ -53,7 +57,9 @@ public class CinemaRoomDAL extends BaseDAL {
                 SQLQuery.insertCinemaRoom,
                 cinemaRoom.cinemaId,
                 cinemaRoom.name,
-                cinemaRoom.numberOfSeats
+                cinemaRoom.numberOfSeats,
+                cinemaRoom.rows,
+                cinemaRoom.numbers
         );
 
         boolean isCreated = openUpdateConnection(query);
@@ -72,10 +78,12 @@ public class CinemaRoomDAL extends BaseDAL {
                 cinemaRoom.cinemaId = result.getInt(CinemaRoomDAL.CINEMA_ID_INDEX);
                 cinemaRoom.name = result.getString(CinemaRoomDAL.NAME_INDEX);
                 cinemaRoom.numberOfSeats = result.getInt(CinemaRoomDAL.NUMBER_OF_SEATS_INDEX);
+                cinemaRoom.rows = result.getInt(CinemaRoomDAL.ROWS_INDEX);
+                cinemaRoom.numbers = result.getInt(CinemaRoomDAL.NUMBERS_INDEX);
 
                 cinemaRooms.add(cinemaRoom);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         closeConnection(result);

@@ -77,14 +77,15 @@ public class ShowingDAL extends BaseDAL {
                 showing.id = result.getInt(ShowingDAL.ID_INDEX);
                 showing.cinemaId = result.getInt(ShowingDAL.CINEMA_ID_INDEX);
                 showing.movieId = result.getInt(ShowingDAL.MOVIE_ID_INDEX);
-                showing.startShowingDate = result.getString(ShowingDAL.START_SHOWING_DATE_INDEX);
-                showing.endShowingDate = result.getString(ShowingDAL.END_SHOWING_DATE_INDEX);
-                showing.estimatedCost = result.getFloat(ShowingDAL.ESTIMATED_COST_INDEX);
+                showing.startShowingDate = result.getDate(ShowingDAL.START_SHOWING_DATE_INDEX).toString();
+                showing.endShowingDate = result.getDate(ShowingDAL.END_SHOWING_DATE_INDEX).toString();
+                showing.estimatedCost = result.getInt(ShowingDAL.ESTIMATED_COST_INDEX);
 
                 showings.add(showing);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (NullPointerException | SQLException e) {
+            closeConnection(result);
+            return showings;
         }
         closeConnection(result);
         return showings;

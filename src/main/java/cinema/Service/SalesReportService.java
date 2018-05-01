@@ -3,6 +3,7 @@ package cinema.Service;
 import cinema.DAL.DAL;
 import cinema.Model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SalesReportService {
@@ -25,6 +26,16 @@ public class SalesReportService {
         report.numberOfSoldTickets = session.numberOfSoldTickets;
         report.costOfTickets = costOfTickets;
         return report;
+    }
 
+    public Object[] toDocument() {
+        List<Report> dto = new ArrayList<>();
+        List<Session> sessions = DAL.getSessionDAL().getAll();
+        for (Session session: sessions) {
+            Report report = this.getReport(session.id);
+            dto.add(report);
+        }
+
+        return dto.toArray();
     }
 }

@@ -20,7 +20,7 @@ public class TicketService {
 
     public List<Ticket> getTicketByFilter(String filter) {
         FilterUtil filterUtil = new FilterUtil();
-        String query = filterUtil.generateQuery(filter, "Ticket");
+        String query = filterUtil.generateQuery(filter, "ticket");
         if (query == null) {
             return null;
         }
@@ -28,8 +28,14 @@ public class TicketService {
         return DAL.getTicketDAL().getByQuery(query);
     }
 
-    public boolean createTicket(Ticket ticket) {
-        return DAL.getTicketDAL().insert(ticket);
+    public boolean createTicket(List<Ticket> tickets) {
+        boolean result = true;
+        for (Ticket ticket: tickets) {
+            if (!DAL.getTicketDAL().insert(ticket)) {
+                result = false;
+            }
+        }
+        return result;
     }
 
     public boolean updateTicket(Ticket ticket) {

@@ -78,7 +78,7 @@ public class SeatDAL extends BaseDAL {
                 seat.costCoefficient = result.getFloat(SeatDAL.COST_COEFFICIENT_INDEX);
                 seats.add(seat);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         closeConnection(result);

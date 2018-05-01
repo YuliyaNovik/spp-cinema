@@ -94,7 +94,7 @@ public class UserDAL extends BaseDAL {
                 user.role = RoleHelper.getRole(result.getString(UserDAL.ROLE_INDEX));
                 users.add(user);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         closeConnection(result);
