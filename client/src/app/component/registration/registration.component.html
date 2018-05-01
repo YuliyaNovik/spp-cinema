@@ -20,6 +20,12 @@
       </div>
       <button class="btn btn-success" (click)="registration(userName.value, email.value, password.value, rePassword.value)">Registration</button>
       <a class="btn btn-link" routerLink="/login">Back to login</a>
+      <div class="alert alert-dismissible alert-danger mt-4" *ngIf="passwordHasError || emailHasError || nameHasError">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading" *ngIf="passwordHasError">Invalid password</h4>
+        <h4 class="alert-heading" *ngIf="emailHasError">Invalid email</h4>
+        <h4 class="alert-heading" *ngIf="nameHasError">Invalid name</h4>
+      </div>
     </div>
   </div>
 </div>

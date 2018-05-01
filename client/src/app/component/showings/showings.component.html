@@ -1,0 +1,96 @@
+<div class="offset-1 col-10">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="list-group">
+        <a *ngFor="let showing of showings"
+           class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{showing.movieName}}</h6>
+            <small>
+              <button class="btn btn-danger" (click)="deleteShowing(showing)">Delete</button>
+            </small>
+          </div>
+          <small>Start Date: {{showing.startShowingDate +" | End Date: "+ showing.endShowingDate + " | Estimated cost: " + showing.estimatedCost}}$</small>
+          <p class="mb-1"></p>
+        </a>
+      </div>
+      <br/>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>Search</h3>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="name">Movie Name</label>
+              <input type="text" class="form-control" placeholder="Movie Name" id="name" #name>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="startDate">Start/End Date </label>
+              <input type="date" class="form-control" placeholder="From" id="startDate" #startDate>
+              <br/>
+              <input type="date" class="form-control" placeholder="To" id="endDate" #endDate>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-success m-1" (click)="filterShowings(name, startDate, endDate)">
+            Search
+          </button>
+
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('pdf', name, startDate, endDate)">
+            PDF
+          </button>
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('excel', name, startDate, endDate)">
+            Excel
+          </button>
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('csv', name, startDate, endDate)">
+            CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>Create</h3>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label for="movie">Select Movie</label>
+              <select class="form-control" id="movie" #movie>
+                <option *ngFor="let movie of movies">{{movie.name}}</option>
+              </select>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="startDateCreate">Start/End Date </label>
+              <input type="date" class="form-control" placeholder="From" id="startDateCreate" #startDateCreate>
+              <br/>
+              <input type="date" class="form-control" placeholder="To" id="endDateCreate" #endDateCreate>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label for="estimatedCost">Estimated Cost</label>
+              <input type="number" class="form-control" placeholder="Estimated Cost" id="estimatedCost" #estimatedCost>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-success m-1" (click)="createShowing(movie, startDateCreate, endDateCreate, estimatedCost)">
+            Create
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

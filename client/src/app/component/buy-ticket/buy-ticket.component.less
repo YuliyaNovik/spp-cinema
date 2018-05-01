@@ -1,0 +1,69 @@
+.seats {
+  text-align: center;
+  span {
+    margin: 3px;
+    vertical-align: top;
+    cursor: pointer;
+  }
+
+  .selected-seat {
+    display: inline-block;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+  }
+
+  .seat {
+    transition: 0.7s;
+    display: inline-block;
+    background-color: gray;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+  }
+
+  .buyed-seat {
+    cursor: not-allowed;
+    display: inline-block;
+    background-color: royalblue;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+  }
+}
+
+.sessions {
+  text-align: center;
+  h6 {
+    margin-bottom: 0;
+  }
+
+  .session {
+    margin: 10px 10px;
+    background-color: #02b875;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px;
+    color: white;
+    transition: 0.7s;
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  .session:hover {
+    cursor: pointer;
+    background-color: #02b875;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    transition: 0.7s;
+    opacity: 1;
+  }
+
+  .session.selected {
+    opacity: 1;
+  }
+}

@@ -1,10 +1,11 @@
 <div class="col-12 col-md-10 offset-md-1 movies">
   <div class="row">
     <div class="col-lg-9 col-12">
-      <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+      <app-movie-card *ngFor="let movie of movies" [movie]="movie" [showBuyTicket]="true" (updateMovies)="updateMovies($event)"></app-movie-card>
     </div>
     <div class="col-lg-3 col-12">
-      test
+      <app-movie-filter (updateMovies)="updateMovies($event)" (filterMovies)="filterMovies($event)"
+                        (toDocument)="toDocument($event)"></app-movie-filter>
     </div>
   </div>
 </div>

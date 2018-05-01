@@ -1,0 +1,55 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-3" *ngIf="sessionFound">
+        <div class="card-body">
+          <h3>Sessions</h3>
+          <div class="sessions">
+            <div *ngFor="let session of sessions; let i = index" class="session {{selectedSessionIndex === i ? 'selected' : ''}}" (click)="findSeatsOfCinemaRoom(i, session.cinemaRoomId, session.sessionId, session.sessionCoefficient)">
+              <h6>{{session.date}}</h6>
+              <h6>{{session.time}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3" *ngIf="!sessionFound">
+        <div class="card-body">
+          <h3>Movie show is over</h3>
+        </div>
+      </div>
+      <div class="card mb-3" *ngIf="displaySeats">
+        <div class="card-body">
+          <h3>Select seat(s)</h3>
+          <div class="seats">
+            Screen
+            <div *ngFor="let row of seats; let rowIndex = index" class="seats-row">
+              <span *ngFor="let number of row; let numberIndex = index" (click)="selectSeat(rowIndex, numberIndex)" class="{{number === 0 ? 'seat' : number === -1 ? 'buyed-seat' : 'selected-seat'}}">
+              </span>
+            </div>
+            <br/>
+            <span class="seat"></span> - free
+            <span class="buyed-seat"></span> - busy
+            <span class="selected-seat"></span> - selected
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3" *ngIf="selectedSeats.length > 0">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>Payment info</h3>
+          </li>
+          <li class="list-group-item"> Cost: {{cost}}</li>
+          <li class="list-group-item">Count of tickets: {{selectedSeats.length}}</li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-primary" (click)="buyTicket()">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-movie-card [movie]="movie" [showBuyTicket]="false"></app-movie-card>
+    </div>
+  </div>
+</div>

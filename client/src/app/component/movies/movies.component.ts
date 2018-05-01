@@ -1,39 +1,66 @@
 import { Component, OnInit } from "@angular/core";
 import { Movie } from "../../model/movie";
+import { ImageService } from "../../service/imageService"
+import { MovieService } from "../../service/movieService";
+import * as FileSaver from "file-saver";
+import {AuthService} from "../../service/authService";
 
 @Component({
   selector: "app-movies",
   templateUrl: "./movies.component.html",
-  styleUrls: ["./movies.component.less"]
+  styleUrls: ["./movies.component.less"],
+  providers: [ImageService, MovieService]
 })
 export class MoviesComponent implements OnInit {
   private movies: Array<Movie>;
-  
-  constructor() {
-    this.movies = [];
-    this.movies.push({
-      id: 0,
-      title: "Черная Пантера",
-      description:
-        "С первого взгляда можно решить, что Ваканда — обычная территория дикой Африки, но это не так. Здесь, в недрах пустынных земель, скрываются залежи уникального металла, способного поглощать вибрацию. Многие пытались добраться до него, разоряя всё на своём пути и принося смерть аборигенам, но каждый раз таинственный дух саванны — Чёрная Пантера — вставал на защиту угнетённых. Спустя много лет беда снова приходит в Ваканду, и в этот раз враг заручился поддержкой современных технологий. Когда шансов почти не остаётся, Т`Чалла, молодой принц Ваканды, узнаёт, что именно ему предстоит возродить легенду и продолжить вечную борьбу, надев маску Чёрной Пантеры.",
-      year: "2018",
-      genre: "фантастика, боевик, приключения",
-      country: "США",
-      duration: "134 мин. / 02:14",
-      image: "https://st.kp.yandex.net/images/film_iphone/iphone360_623250.jpg"
-    });
-    this.movies.push({
-      id: 0,
-      title: "Тор 3: Рагнарек",
-      description:
-        "Вернувшись в Асгард в поисках таинственного врага, ведущего охоту на Камни Бесконечности, Тор обнаруживает, что действия его брата Локи, захватившего трон Асгарда, привели к приближению наиболее страшного события — Рагнарёка. По легенде это ознаменует последнюю битву Асгарда, последствием которой станет его полное уничтожение. В попытке предотвратить это событие Тору предстоит прибегнуть к помощи своего товарища из Мстителей — Халка. Вместе им предстоит столкнуться лицом к лицу со злейшим врагом всех девяти миров — огненным демоном Суртуром, целью которого является исполнение пророчества о Рагнарёке и уничтожение девяти миров.",
-      year: "2017",
-      genre: "фантастика, фэнтези, боевик, комедия, приключения",
-      country: "США",
-      duration: "130 мин. / 02:10",
-      image: "https://st.kp.yandex.net/images/film_iphone/iphone360_822709.jpg"
+
+  constructor(private imageService: ImageService, private movieService: MovieService) {
+    this.filterMovies({})
+  }
+
+  ngOnInit() { }
+
+  updateMovies() {
+    this.movieService.getAllMovie().subscribe(this.mapMovies.bind(this))
+  }
+
+  filterMovies(event: any) {
+    if (!event.name && !event.year && !event.duration) {
+      this.movieService.getAllMovie().subscribe(this.mapMovies.bind(this))
+    } else {
+      this.movieService.getMovieByFilter(event.name, event.year, event.duration).subscribe(this.mapMovies.bind(this))
+    }
+  }
+
+  toDocument(event) {
+    this.movieService.exportToDocument(
+      event.type, event.name, event.year, event.duration
+    ).subscribe((response: Blob) => {
+      FileSaver.saveAs(response, "export" + (event.type === "csv" ? ".csv" : ""));
     });
   }
 
-  ngOnInit() {}
+  mapMovies(movies: any) {
+    this.movies = [];
+    for (let movie of movies) {
+      let newMovie = new Movie();
+      newMovie.title = movie.name;
+      newMovie.description = movie.description;
+      newMovie.ageLimit = movie.ageLimit;
+      newMovie.director = movie.director;
+      newMovie.duration = movie.duration + " min.";
+      newMovie.id = movie.id;
+      newMovie.year = movie.year;
+      this.movies.push(newMovie)
+    }
+    this.movies.reverse();
+
+    for (let item of this.movies) {
+      this.imageService.getImage(item.title, (url) => {
+        item.image = url;
+      })
+    }
+  }
+
+  createMovie() {}
 }

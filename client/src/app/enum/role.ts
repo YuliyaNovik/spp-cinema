@@ -1,6 +1,7 @@
 export enum Role {
+  ANON,
   DEFAULT,
-  ADMIN,
   MOVIE_ADMIN,
-  ACCOUNTANT
+  ACCOUNTANT,
+  ADMIN
 }

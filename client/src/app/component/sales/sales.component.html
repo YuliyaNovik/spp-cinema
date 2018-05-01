@@ -1,0 +1,45 @@
+<div class="offset-1 col-10">
+  <div class="row">
+
+    <div class="col-md-12 mb-3">
+      <button class="btn btn-primary m-1"
+              (click)="exportToDocument('pdf')">
+        Report to PDF
+      </button>
+      <button class="btn btn-primary m-1"
+              (click)="exportToDocument('excel')">
+        Report to Excel
+      </button>
+      <button class="btn btn-primary m-1"
+              (click)="exportToDocument('csv')">
+        Report to CSV
+      </button>
+    </div>
+
+    <div class="col-md-12">
+      <div class="list-group">
+        <a *ngFor="let session of sessions"
+           class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{session.filmName}}</h6>
+          </div>
+          <small>Date: {{session.date +" | Time: "+ session.time + " | Sold: " + session.numberOfSoldTickets}}</small>
+          <br/><br/>
+          <button class="btn btn-default m-1"
+                  (click)="exportTicketToDocument('pdf', session)">
+            Tickets to PDF
+          </button>
+          <button class="btn btn-default m-1"
+                  (click)="exportTicketToDocument('excel', session)">
+            Tickets to Excel
+          </button>
+          <button class="btn btn-default m-1"
+                  (click)="exportTicketToDocument('csv', session)">
+            Tickets to CSV
+          </button>
+        </a>
+      </div>
+      <br/>
+    </div>
+  </div>
+</div>

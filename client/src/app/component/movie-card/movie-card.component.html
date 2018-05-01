@@ -12,15 +12,16 @@
     <div class="col-md-8">
       <div class="card mb-3">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Genre: {{movie.genre}}</li>
-          <li class="list-group-item">Country: {{movie.country}}</li>
+          <li class="list-group-item">Director: {{movie.director}}</li>
+          <li class="list-group-item">Age Limit: {{movie.ageLimit}}</li>
           <li class="list-group-item">Duration: {{movie.duration}}</li>
         </ul>
         <div class="card-body">
           <p class="card-text">{{movie.description}}</p>
         </div>
-        <div class="card-body">
-          <button class="btn btn-success">Learn More</button>
+        <div class="card-body" *ngIf="showBuyTicket">
+          <button class="btn btn-success" (click)="buyTicket(movie)">Buy ticket</button>
+          <button class="btn btn-danger" *ngIf="authService.getRole() > minCreateRole" (click)="deleteMovie(movie.id)">Delete</button>
         </div>
       </div>
     </div>

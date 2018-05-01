@@ -1,0 +1,108 @@
+<div class="offset-1 col-10">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="list-group">
+        <a *ngFor="let session of sessions"
+           class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{session.filmName}}</h6>
+            <small>
+              <button class="btn btn-danger" (click)="deleteSession(session)">Delete</button>
+            </small>
+          </div>
+          <small>Date: {{session.date +" | Time: "+ session.time + " | Sold: " + session.numberOfSoldTickets}}</small>
+          <p class="mb-1"></p>
+        </a>
+      </div>
+      <br/>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>Search</h3>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="name">Name</label>
+              <input type="text" class="form-control" placeholder="Name" id="name" #name>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="yearFrom">Year </label>
+              <input type="number" class="form-control" placeholder="From" id="yearFrom" #yearFrom>
+              <br/>
+              <input type="number" class="form-control" placeholder="To" id="yearTo" #yearTo>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="durationFrom">Duration</label>
+              <input type="number" class="form-control" placeholder="From" id="durationFrom" #durationFrom>
+              <br/>
+              <input type="number" class="form-control" placeholder="To" id="durationTo" #durationTo>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-success m-1" (click)="filterMovies(name, yearFrom, yearTo, durationFrom, durationTo)">
+            Search
+          </button>
+
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('pdf', name, yearFrom, yearTo, durationFrom, durationTo)">
+            PDF
+          </button>
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('excel', name, yearFrom, yearTo, durationFrom, durationTo)">
+            Excel
+          </button>
+          <button class="btn btn-primary m-1"
+                  (click)="exportToDocument('csv', name, yearFrom, yearTo, durationFrom, durationTo)">
+            CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>Create</h3>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label for="movie">Select Movie</label>
+              <select class="form-control" id="movie" #movie>
+                <option *ngFor="let movie of movies">{{movie.name}}</option>
+              </select>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label class="col-form-label" for="date">Date/Time </label>
+              <input type="date" class="form-control" placeholder="Date" id="date" #date>
+              <br/>
+              <input type="time" class="form-control" placeholder="Time" id="time" #time>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label for="cinemaRoom">Cinema Room/Coefficient</label>
+              <select class="form-control" id="cinemaRoom" #cinemaRoom>
+                <option *ngFor="let cinemaRoom of cinemaRooms">{{cinemaRoom.name}}</option>
+              </select>
+              <br/>
+              <input type="number" class="form-control" placeholder="Coefficient" id="coefficient" #coefficient>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-success m-1" (click)="createSession(movie, date, time, cinemaRoom, coefficient)">
+            Create
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
