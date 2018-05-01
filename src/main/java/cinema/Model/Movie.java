@@ -9,9 +9,10 @@ public class Movie {
     public String endDate;
     public String director;
     public String ageLimit;
+    public String description;
 
     @Override
     public String toString() {
-        return String.format("%s|%d|%d|%s|%s|%s|%s", name, year, duration, startDate, endDate, director, ageLimit);
+        return String.format("%s|%d|%d|%s|%s", name, year, duration, director, ageLimit);
     }
 }

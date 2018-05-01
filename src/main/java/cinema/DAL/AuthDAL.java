@@ -1,7 +1,6 @@
 package cinema.DAL;
 
 import cinema.Model.Auth;
-import cinema.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,6 +11,7 @@ public class ExportService {
     private static final String SESSION_NAME = "session";
     private static final String SHOWING_NAME = "showing_movie";
     private static final String TICKET_NAME = "ticket";
+    private static final String REPORT_NAME = "report";
     private static final String USER_NAME = "user";
     private static FilterUtil filterUtil = new FilterUtil();
 
@@ -28,8 +29,8 @@ public class ExportService {
         if (items == null) {
             return null;
         }
-        PdfUtil excelUtil = new PdfUtil();
-        return excelUtil.generate(items);
+        PdfUtil pdfUtil = new PdfUtil();
+        return pdfUtil.generate(items);
     }
 
     public byte[] exportToXLSX(String table, String filter) {
@@ -44,7 +45,7 @@ public class ExportService {
 
     private Object[] getItems(String table, String filter) {
         String query = filterUtil.generateQuery(filter, table);
-        if (query == null) {
+        if (query == null && !table.equals(REPORT_NAME)) {
             return null;
         }
 
@@ -58,7 +59,9 @@ public class ExportService {
             case TICKET_NAME:
                 return Service.getTicketService().toDocument(DAL.getTicketDAL().getByQuery(query));
             case USER_NAME:
-                return DAL.getTicketDAL().getByQuery(query).toArray();
+                return DAL.getUserDAL().getByQuery(query).toArray();
+            case REPORT_NAME:
+                return Service.getSalesReportService().toDocument();
             default:
                 return null;
         }

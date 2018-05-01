@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class BaseDAL {
     private static final String url = "jdbc:mysql://localhost:3306/mydb?autoReconnect=true&useSSL=false&characterEncoding=UTF8";
+    //private static final String url = "jdbc:mysql://192.168.1.113:3306/mydb?autoReconnect=true&useSSL=false&characterEncoding=UTF8";
     private static final String user = "root";
     private static final String password = "1610-19";
 
@@ -34,6 +35,10 @@ public class BaseDAL {
     }
 
     void closeConnection(ResultSet result) {
+        if (result == null) {
+            return;
+        }
+
         try {
             connection.close();
             statement.close();

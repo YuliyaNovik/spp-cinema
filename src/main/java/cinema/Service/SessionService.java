@@ -19,7 +19,7 @@ public class SessionService {
 
     public List<Session> getSessionByFilter(String filter) {
         FilterUtil filterUtil = new FilterUtil();
-        String query = filterUtil.generateQuery(filter, "Session");
+        String query = filterUtil.generateQuery(filter, "session");
         if (query == null) {
             return null;
         }

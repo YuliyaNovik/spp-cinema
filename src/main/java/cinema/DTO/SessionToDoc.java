@@ -10,6 +10,6 @@ public class SessionToDoc {
 
     @Override
     public String toString() {
-        return String.format("%s|%s|%s|%s|%d|%f", filmName, date, time, cinemaRoomName, numberOfSoldTickets, costOfTickets);
+        return String.format("%s|%s|%s|%s|%d|%.2f", filmName, date, time, cinemaRoomName, numberOfSoldTickets, costOfTickets);
     }
 }

@@ -8,6 +8,6 @@ public class ShowingToDoc {
 
     @Override
     public String toString() {
-        return String.format("%s|%s|%s|%f", filmName, startShowingDate, endShowingDate, estimatedCost);
+        return String.format("%s|%s|%s|%.2f", filmName, startShowingDate, endShowingDate, estimatedCost);
     }
 }

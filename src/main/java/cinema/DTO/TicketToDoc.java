@@ -10,6 +10,6 @@ public class TicketToDoc {
 
     @Override
     public String toString() {
-        return String.format("%s|%s|%s|%d|%d|%f", filmName, date, time, row, number, cost);
+        return String.format("%s|%s|%s|%d|%d|%.2f", filmName, date, time, row, number, cost);
     }
 }

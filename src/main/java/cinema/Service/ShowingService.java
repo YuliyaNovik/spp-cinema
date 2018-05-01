@@ -21,7 +21,7 @@ public class ShowingService {
 
     public List<Showing> getShowingByFilter(String filter) {
         FilterUtil filterUtil = new FilterUtil();
-        String query = filterUtil.generateQuery(filter, "Showing");
+        String query = filterUtil.generateQuery(filter, "showing_movie");
         if (query == null) {
             return null;
         }

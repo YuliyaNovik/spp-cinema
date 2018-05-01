@@ -8,4 +8,9 @@ public class User {
     public String email;
     public String password;
     public Role role;
+
+    @Override
+    public String toString() {
+        return userName + "|" + email + "|" + role.toString();
+    }
 }

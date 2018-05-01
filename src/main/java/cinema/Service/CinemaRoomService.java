@@ -17,7 +17,7 @@ public class CinemaRoomService {
 
     public List<CinemaRoom> getCinemaRoomByFilter(String filter) {
         FilterUtil filterUtil = new FilterUtil();
-        String query = filterUtil.generateQuery(filter, "CinemaRoom");
+        String query = filterUtil.generateQuery(filter, "cinema_room");
         if (query == null) {
             return null;
         }
